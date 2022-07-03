@@ -2,6 +2,9 @@
 
 const accordion = document.querySelector('.accordion');
 let size = getSize(document.documentElement.clientWidth);
+const popup = document.querySelector('.popup');
+const body = document.querySelector('.body');
+let isPopup = false;
 
 // draw accordion elements
 
@@ -32,6 +35,10 @@ accordion.addEventListener('click', (event) => {
     if (event.target.closest('.accordion__header')) {
         const item = event.target.closest('.accordion__item');
         toggleSpoiler(item, item.classList.contains('accordion__item_open'));
+    }
+    //popup
+    if (event.target.closest('.spoiler__img') && !isPopup || isPopup) {
+        togglePopup (event.target.closest('.spoiler__img'))
     }
 });
 
@@ -76,4 +83,17 @@ function getSize (el) {
   } else if (el > 1440) {
     return 1920
   }
+}
+
+// popup
+
+popup.addEventListener('click', togglePopup)
+
+function togglePopup (img) {
+    if (!isPopup) {
+        popup.children[0].children[0].src = img.src;
+    } 
+    popup.classList.toggle('popup_open');
+    body.classList.toggle('body_hidden');
+    isPopup = !isPopup;    
 }
