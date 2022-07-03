@@ -1,0 +1,262 @@
+@font-face {
+    font-family: Roboto;
+    src: url('assets/fonts/Roboto.ttf');
+    font-weight: 400;
+}
+$color-dark: #012B34;
+$color-dark-l: #000402;
+$color-dark-s: #001418c6;
+$color-aqua: #02818A;
+$color-aqua-xs: #02818a1a;
+$color_ligth: #E6E6E6;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 16px;
+    @media (max-width: 1440px) {
+        font-size: 12px;
+    }    
+}
+.body {
+    height: 100vh;
+}
+.body_hidden {
+    overflow: hidden;
+}
+.wrapper {
+    min-height: 100%;
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 100px 140px 0;
+    font-family: Roboto;
+    color: $color-dark;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    @media (max-width: 1440px) {
+        max-width: 1440px;
+        padding: 80px 110px 0;
+        gap: 60px;
+    }
+    @media (max-width: 1280px) {
+        max-width: 1280px;
+        padding: 70px 97px 0;
+        gap: 58px;
+    }
+    @media (max-width: 768px) {
+        max-width: 768px;
+        padding: 60px 30px 0;
+        gap: 50px;
+    }
+    @media (max-width: 425px) {
+        max-width: 375px;
+        padding: 50px 14px 0;
+        gap: 40px;
+    }
+}
+.title {
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    padding: 0 10px;
+    @media (max-width: 1280px) {
+        font-size: 3.5rem;
+    }
+    @media (max-width: 425px) {
+        font-size: 2.5rem;
+    }
+}
+.main {
+    flex: 1 1 auto;
+    min-height: 100vh;
+}
+.accordion {
+    display: flex;
+    flex-direction: column;
+    &__item {
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid $color_ligth;
+        border-bottom: 1px solid $color_ligth;
+        border-collapse: collapse;
+        transition: all 0.3s linear;
+    }
+    &__header {
+        height: 100px;
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 16px;
+        cursor: pointer;
+        &:hover {
+            background-color: $color-aqua-xs;
+            & .accordion__button {
+                transform: scale(130%) rotate(45deg);
+            }
+        }
+        @media (max-width: 1440px) {
+            height: 78px;
+        }
+        @media (max-width: 1280px) {
+            height: 67px;
+        }
+        @media (max-width: 768px) {
+            height: 78px;
+        }
+        @media (max-width: 425px) {
+            height: 67px;
+        }
+    }
+    &__title {
+        font-size: 2.25rem;
+        font-weight: 400;
+        line-height: 120%;
+        @media (max-width: 1280px) {
+            font-size: 2rem;
+        }
+        @media (max-width: 768px) {
+            font-size: 2.25rem;
+        }
+        @media (max-width: 425px) {
+            font-size: 2rem;
+        }
+    }
+    &__button {
+        width: 22px;
+        height: 22px;
+        transform: rotate(45deg);
+        transition: all 0.3s linear;
+        @media (max-width: 1440px) {
+            width: 14.15px;
+            height: 14.15px;
+        }
+    }
+}
+.spoiler {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px 10px 40px;
+    @media (max-width: 1440px) {
+        gap: 20px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+    @media (max-width: 1280px) {
+        gap: 16px;
+        padding-top: 16px;
+        padding-bottom: 24px;
+    }
+    @media (max-width: 375px) {
+        padding-bottom: 20px;
+    }
+	&__title {
+        font-size: 1.5rem;
+        font-weight: 400;
+	}
+	&__img {
+        width: 600px;
+        height: 400px;
+        margin: 0 auto;
+        border-radius: 16px;
+        padding: 5px;
+        transition: all 0.3s linear;
+        cursor: pointer;
+        &:hover {
+            outline: 2px solid $color-aqua;
+            transform: scale(105%);
+        }
+        @media (max-width: 1280px) {
+            width: 450px;
+            height: 300px;
+        }
+        @media (max-width: 768px) {
+            width: 300px;
+            height: 200px;
+        }
+	}
+	&__text {
+        font-size: 1.25rem;
+        text-align: justify;
+        @media (max-width: 1280px) {
+            font-size: 1.17rem;
+        }
+	}
+}
+.flex {
+    display: flex;
+}
+.footer {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    &__author {
+        font-size: 1.5rem;
+    }
+    &__icon {
+        transition: all 0.3s linear;
+        &:hover {
+            transform: scale(110%);
+        }
+    }
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    background-color: $color-dark-s;
+    cursor: pointer;
+    &__container {
+        max-width: 90%;
+        max-height: 90%;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        @media (max-width: 768px) {
+            width: 80%;
+        }
+    }
+    &__img {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        border: 2px solid $color_ligth;
+        border-radius: 16px;
+    }
+    &__close {
+        position: fixed;
+        top: -50px;
+        right: -50px;
+        width: 50px;
+        padding: 10px;
+        border-radius: 100%;
+        background-color: $color_ligth;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        &:hover {
+            transform: scale(120%);
+        }
+        @media (max-width: 768px) {
+            top: -30px;
+            right: -30px;
+            width: 30px;
+        }
+    }
+    &.popup_open {
+        display: block;
+    }
+}
