@@ -1,10 +1,7 @@
 'use strict'
 
-
-
-
 const accordion = document.querySelector('.accordion');
-
+let size = getSize(document.documentElement.clientWidth);
 
 // draw accordion elements
 
@@ -54,3 +51,29 @@ function toggleSpoiler (item , isOpen) {
     });    
 }
 
+
+// redraw elements when changing the screen width, for correct display
+
+window.addEventListener('resize', () => {
+    const windowSize = getSize(document.documentElement.clientWidth);
+    if (size !== windowSize) {
+        console.log('draw')
+        accordion.innerHTML = ''; 
+        drawElements()
+    };
+    size = windowSize;
+}) 
+
+function getSize (el) {
+  if (el <= 375) {
+    return 375
+  } else if (el > 375 && el <= 768) {
+    return 768
+  } else if (el > 768 && el <= 1280) {
+    return 1280
+  } else if (el > 1280 && el <= 1440) {
+    return 1440
+  } else if (el > 1440) {
+    return 1920
+  }
+}
