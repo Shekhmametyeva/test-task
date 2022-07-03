@@ -166,7 +166,7 @@ html {
 }
 
 .spoiler {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 30px;
   padding: 30px 10px 40px;
@@ -227,6 +227,10 @@ html {
   .spoiler__text {
     font-size: 1.17rem;
   }
+}
+
+.flex {
+  display: flex;
 }
 
 .footer {
